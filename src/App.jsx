@@ -4,13 +4,15 @@ import TaskList from "./TaskList/TaskList";
 
 function App() {
   return (
-    <div class="uk-grid">
-      <div class="uk-width-1-4">
-      <SidebarContainer />
-      </div>
-      <div class="uk-grid-expand">
-        <NewTaskField />
-        <TaskList />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3">
+          <SidebarContainer />
+        </div>
+        <div class="col-5">
+          <NewTaskField />
+          <TaskList />
+        </div>
       </div>
     </div>
   );

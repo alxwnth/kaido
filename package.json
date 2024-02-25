@@ -14,6 +14,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@tauri-apps/api": "^1.5.2",
+    "bootstrap": "^5.3.3",
     "solid-js": "^1.7.8",
     "uikit": "^3.18.3"
   },

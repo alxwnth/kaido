@@ -1,6 +1,6 @@
 function NewListButton() {
     return(
-        <button>+</button>
+        <button type="button" class="btn">+</button>
     )
 }
 
