@@ -1,0 +1,7 @@
+CREATE TABLE annotation (
+    id INTEGER NOT NULL PRIMARY KEY,
+    task_id INTEGER NOT NULL REFERENCES task(id) ON UPDATE CASCADE,
+    contents TEXT NOT NULL,
+    attachment_url VARCHAR,
+    created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
