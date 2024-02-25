@@ -17,20 +17,22 @@ function ProjectList() {
   ]);
 
   return (
-      <ul class="uk-nav uk-nav-default">
-        <For each={projects()}>
-          {(item) => (
-            <li>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <For each={projects()}>
+        {(item) => (
+          <li class="nav-item">
+            <a href="#" class="nav-link link-body-emphasis">
               <ProjectListItem
                 icon={item.icon}
                 projectName={item.projectName}
                 nTasksOverdue={item.nTasksOverdue}
                 nTasks={item.nTasks}
               />
-            </li>
-          )}
-        </For>
-      </ul>
+            </a>
+          </li>
+        )}
+      </For>
+    </ul>
   );
 }
 

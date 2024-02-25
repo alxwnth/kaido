@@ -7,7 +7,7 @@ function NewTaskField() {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <input name="task" placeholder="Add an item in..."></input>
+      <input name="task" class="form-control" placeholder="Add an item in..."></input>
     </form>
   );
 }
