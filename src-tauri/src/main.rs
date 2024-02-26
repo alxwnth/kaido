@@ -7,7 +7,13 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+mod commands;
+mod models;
 mod db;
+mod schema;
+mod services;
+
+use commands::task_commands::*;
 
 fn main() {
     tauri::Builder::default()
@@ -15,7 +21,11 @@ fn main() {
             db::init();
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            add_new_task,
+            get_tasks,
+            ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
