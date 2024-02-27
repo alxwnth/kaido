@@ -1,6 +1,7 @@
 import SidebarContainer from "./Sidebar/SidebarContainer";
 import NewTaskField from "./TaskList/NewTaskField";
 import TaskList from "./TaskList/TaskList";
+import { TaskListProvider } from "./contexts/TaskListContext";
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
           <SidebarContainer />
         </div>
         <div class="col-5">
-          <NewTaskField />
-          <TaskList />
+          <TaskListProvider>
+            <NewTaskField />
+            <TaskList />
+          </TaskListProvider>
         </div>
       </div>
     </div>
