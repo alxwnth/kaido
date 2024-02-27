@@ -1,9 +1,11 @@
 import NewListButton from "./ProjectList/NewListButton";
 import ProjectList from "./ProjectList/ProjectList";
 
+import "./SidebarContainer.scss";
+
 function SidebarContainer() {
   return (
-    <div class="uk-background-muted">
+    <div class="sidebar-container">
       <ProjectList />
       <NewListButton/>
     </div>
