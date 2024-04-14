@@ -1,4 +1,4 @@
-use crate::models::{task::Task,new_task::NewTask};
+use crate::models::{new_task::NewTask, task::Task};
 use crate::services::task_service;
 
 #[tauri::command]
@@ -9,4 +9,9 @@ pub fn add_new_task(task_to_add: NewTask) {
 #[tauri::command]
 pub fn get_tasks() -> Vec<Task> {
     task_service::get_tasks()
+}
+
+#[tauri::command]
+pub fn get_task(task_id: i32) -> Option<Task> {
+    task_service::get_task(&task_id)
 }

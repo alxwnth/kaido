@@ -8,8 +8,8 @@ fn greet(name: &str) -> String {
 }
 
 mod commands;
-mod models;
 mod db;
+mod models;
 mod schema;
 mod services;
 
@@ -25,7 +25,8 @@ fn main() {
             greet,
             add_new_task,
             get_tasks,
-            ])
+            get_task,
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
