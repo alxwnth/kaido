@@ -1,28 +1,34 @@
 {
   "name": "kaido",
+  "private": true,
   "version": "0.0.0",
-  "description": "",
   "type": "module",
   "scripts": {
-    "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
     "tauri": "tauri"
   },
-  "license": "AGPL-3.0+",
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "@tauri-apps/api": "^1.5.2",
-    "bootstrap": "^5.3.3",
-    "solid-js": "^1.7.8",
-    "typescript": "^5.3.3",
-    "uikit": "^3.18.3"
+    "@tauri-apps/api": ">=2.0.0-beta.0",
+    "@tauri-apps/plugin-shell": ">=2.0.0-beta.0"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.5.8",
-    "sass": "^1.71.1",
-    "vite": "^5.0.0",
-    "vite-plugin-solid": "^2.8.0"
+    "@sveltejs/vite-plugin-svelte": "^3.0.1",
+    "@tauri-apps/cli": ">=2.0.0-beta.0",
+    "@tsconfig/svelte": "^5.0.2",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.0.0",
+    "internal-ip": "^7.0.0",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "prettier-plugin-svelte": "^3.2.3",
+    "svelte": "^4.2.8",
+    "svelte-check": "^3.4.6",
+    "tailwindcss": "^3.4.3",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.2",
+    "vite": "^5.0.0"
   }
 }
