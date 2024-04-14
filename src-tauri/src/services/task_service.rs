@@ -1,6 +1,9 @@
 use crate::schema::task;
 use crate::schema::task::dsl;
-use crate::{db::establish_db_connection, models::{new_task::NewTask,task::Task}};
+use crate::{
+    db::establish_db_connection,
+    models::{new_task::NewTask, task::Task},
+};
 use diesel::prelude::*;
 
 pub fn add_task(task_to_add: &NewTask) {
@@ -18,4 +21,13 @@ pub fn get_tasks() -> Vec<Task> {
     dsl::task
         .load::<Task>(connection)
         .expect("Could not get tasks")
+}
+
+pub fn get_task(task_id: &i32) -> Option<Task> {
+    let connection = &mut establish_db_connection();
+
+    dsl::task
+        .filter(dsl::id.eq(task_id))
+        .first::<Task>(connection)
+        .ok()
 }
