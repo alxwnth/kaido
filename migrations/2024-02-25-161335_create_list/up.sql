@@ -3,4 +3,4 @@ CREATE TABLE list (
     name VARCHAR NOT NULL
 );
 INSERT INTO list(name)
-VALUES ("inbox");
+VALUES ("Inbox");

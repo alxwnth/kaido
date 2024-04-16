@@ -2,8 +2,8 @@
 
 diesel::table! {
     annotation (id) {
-        id -> Integer,
-        task_id -> Nullable<Integer>,
+        id -> Int4,
+        task_id -> Nullable<Int4>,
         contents -> Text,
         attachment_url -> Nullable<Text>,
         created -> Timestamp,
@@ -12,14 +12,14 @@ diesel::table! {
 
 diesel::table! {
     list (id) {
-        id -> Integer,
+        id -> Int4,
         name -> Text,
     }
 }
 
 diesel::table! {
     subtask (id) {
-        id -> Integer,
+        id -> Int4,
         task_id -> Nullable<Integer>,
         contents -> Text,
     }
@@ -27,8 +27,8 @@ diesel::table! {
 
 diesel::table! {
     task (id) {
-        id -> Integer,
-        list_id -> Nullable<Integer>,
+        id -> Int4,
+        list_id -> Int4,
         done -> Bool,
         contents -> Text,
         created -> Timestamp,
@@ -43,9 +43,4 @@ diesel::joinable!(annotation -> task (task_id));
 diesel::joinable!(subtask -> task (task_id));
 diesel::joinable!(task -> list (list_id));
 
-diesel::allow_tables_to_appear_in_same_query!(
-    annotation,
-    list,
-    subtask,
-    task,
-);
+diesel::allow_tables_to_appear_in_same_query!(annotation, list, subtask, task,);

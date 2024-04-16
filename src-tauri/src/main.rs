@@ -13,6 +13,7 @@ mod models;
 mod schema;
 mod services;
 
+use commands::list_commands::*;
 use commands::task_commands::*;
 
 fn main() {
@@ -26,6 +27,7 @@ fn main() {
             add_new_task,
             get_tasks,
             get_task,
+            get_lists,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

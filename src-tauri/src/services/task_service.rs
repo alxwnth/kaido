@@ -1,10 +1,8 @@
-use crate::schema::task;
-use crate::schema::task::dsl;
-use crate::{
-    db::establish_db_connection,
-    models::{new_task::NewTask, task::Task},
-};
+use crate::db::establish_db_connection;
+use crate::models::{list::List, new_task::NewTask, task::Task};
+use crate::schema::{list, task};
 use diesel::prelude::*;
+use diesel::result::Error;
 
 pub fn add_task(task_to_add: &NewTask) {
     let connection = &mut establish_db_connection();
@@ -14,20 +12,27 @@ pub fn add_task(task_to_add: &NewTask) {
         .execute(connection)
         .expect("Could not add new task");
 }
-// TODO: This will need a "list" argument and other optional args for running search queries
-pub fn get_tasks() -> Vec<Task> {
+
+// TODO: To keep in mind, maybe it's best to have all functions return Result and do proper error handling
+pub fn get_tasks(current_list_id: i32) -> Result<Vec<Task>, Error> {
     let connection = &mut establish_db_connection();
 
-    dsl::task
-        .load::<Task>(connection)
-        .expect("Could not get tasks")
+    let current_list = list::table
+        .find(current_list_id)
+        .select(List::as_select())
+        .get_result(connection)?;
+
+    let tasks = Task::belonging_to(&current_list)
+        .select(Task::as_select())
+        .load(connection)?;
+
+    Ok(tasks)
 }
 
 pub fn get_task(task_id: &i32) -> Option<Task> {
+    use crate::schema::task::dsl::{id, task};
+
     let connection = &mut establish_db_connection();
 
-    dsl::task
-        .filter(dsl::id.eq(task_id))
-        .first::<Task>(connection)
-        .ok()
+    task.filter(id.eq(task_id)).first::<Task>(connection).ok()
 }
