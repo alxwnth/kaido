@@ -1,44 +1,23 @@
+<!-- 
+KaiDo: A simple local to-do list application
+Copyright 2024 alxwnth <https://www.alxwnth.com/>
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	import { invoke } from '@tauri-apps/api/core';
-
-	import Greet from './lib/Greet.svelte';
-
-	onMount(async () => {
-		const tasks = await invoke('get_tasks');
-		console.log(tasks);
-	});
+	import NewTaskInput from './lib/components/NewTaskInput.svelte';
+	import Sidebar from './lib/components/Sidebar.svelte';
+	import TaskList from './lib/components/TaskList.svelte';
 </script>
 
-<main class="container">
-	<h1 class="text-3xl font-bold underline text-red-400">Welcome to Tauri!</h1>
-
-	<div class="row">
-		<a href="https://vitejs.dev" target="_blank">
-			<img src="/vite.svg" class="logo vite" alt="Vite Logo" />
-		</a>
-		<a href="https://tauri.app" target="_blank">
-			<img src="/tauri.svg" class="logo tauri" alt="Tauri Logo" />
-		</a>
-		<a href="https://svelte.dev" target="_blank">
-			<img src="/svelte.svg" class="logo svelte" alt="Svelte Logo" />
-		</a>
-	</div>
-
-	<p>Click on the Tauri, Vite, and Svelte logos to learn more.</p>
-
-	<div class="row">
-		<Greet />
-	</div>
-</main>
-
-<style>
-	.logo.vite:hover {
-		filter: drop-shadow(0 0 2em #747bff);
-	}
-
-	.logo.svelte:hover {
-		filter: drop-shadow(0 0 2em #ff3e00);
-	}
-</style>
+<div class="flex gap-6 h-screen">
+	<nav>
+		<Sidebar />
+	</nav>
+	<main class="flex-grow mt-6">
+		<div class="flex flex-col gap-6">
+			<NewTaskInput />
+			<TaskList />
+		</div>
+	</main>
+</div>
