@@ -17,3 +17,8 @@ pub fn get_tasks(list_id: Option<i32>) -> Vec<Task> {
 pub fn get_task(task_id: i32) -> Option<Task> {
     task_service::get_task(&task_id)
 }
+
+#[tauri::command]
+pub fn toggle_task(task_id: i32) {
+    task_service::toggle_task(task_id);
+}

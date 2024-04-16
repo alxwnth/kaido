@@ -14,4 +14,5 @@ export interface IStorageDriver {
 	createTask(task: Task): Promise<void>;
 	updateTask(task: Task): Promise<void>;
 	deleteTask(taskId: number): Promise<void>;
+	toggleTask(taskId: number): Promise<void>;
 }

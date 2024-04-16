@@ -28,6 +28,7 @@ fn main() {
             get_tasks,
             get_task,
             get_lists,
+            toggle_task,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

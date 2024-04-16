@@ -30,5 +30,8 @@ export const StorageDriver: IStorageDriver = {
 	},
 	deleteTask: function (taskId: number): Promise<void> {
 		throw new Error('Function not implemented.');
+	},
+	toggleTask: async function (taskId: number): Promise<void> {
+		await invoke('toggle_task', { taskId: taskId });
 	}
 };
