@@ -17,7 +17,7 @@
 		class="w-full bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-600 divide-y divide-gray-200 dark:divide-gray-600"
 	>
 		{#each tasks as task}
-			<li><Task contents={task.contents} /></li>
+			<li><Task contents={task.contents} done={task.done} taskId={task.id} /></li>
 		{/each}
 	</ul>
 {/if}

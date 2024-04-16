@@ -1,6 +1,8 @@
 use crate::db::establish_db_connection;
 use crate::models::{list::List, new_task::NewTask, task::Task};
+use crate::schema::task::done;
 use crate::schema::{list, task};
+use diesel::dsl::not;
 use diesel::prelude::*;
 use diesel::result::Error;
 
@@ -18,7 +20,7 @@ pub fn get_tasks(current_list_id: i32) -> Result<Vec<Task>, Error> {
     let connection = &mut establish_db_connection();
 
     let current_list = list::table
-        .find(current_list_id)
+        .find(&current_list_id)
         .select(List::as_select())
         .get_result(connection)?;
 
@@ -35,4 +37,13 @@ pub fn get_task(task_id: &i32) -> Option<Task> {
     let connection = &mut establish_db_connection();
 
     task.filter(id.eq(task_id)).first::<Task>(connection).ok()
+}
+
+pub fn toggle_task(task_id: i32) {
+    let connection = &mut establish_db_connection();
+
+    diesel::update(task::table.find(&task_id))
+        .set(done.eq(not(done)))
+        .execute(connection)
+        .ok();
 }
