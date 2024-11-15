@@ -1,14 +1,16 @@
 {
+  "$schema": "https://schema.tauri.app/config/2",
   "productName": "kaido",
-  "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "version": "0.1.0",
+  "identifier": "com.alxwnth.kaido",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "bun run build",
-    "frontendDist": "../dist"
+    "frontendDist": "../build"
   },
-  "app": {"windows": [
+  "app": {
+    "windows": [
       {
         "title": "kaido",
         "width": 800,
