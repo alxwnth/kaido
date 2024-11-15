@@ -13,5 +13,6 @@
       "database": "/home/alex/.config/kaido/tasks.sqlite",
       "name": "kaido_tasks"
     }
-  ]
+  ],
+  "editor.formatOnSave": true
 }
